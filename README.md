@@ -1,10 +1,14 @@
 # Flexible Text Copy Adapter (FTCA)
-![Logo](./assets/20250312151514.jpeg)
+<img width="407" alt="{2793AAE1-85B1-4A0C-9D16-D1161511C907}" src="https://github.com/user-attachments/assets/7798a69e-956c-4fdd-9f79-72f56b82332a" />
 
 ## What is it?
 This is a small utility that serves as an adapter, allowing to establish communication between a class of programs for assistance in reading in a foreign language and a local dictionary or translator, through the system clipboard.
 
 In my case, it helps to easily connect local programs Lute (LWT) and GoldenDict for the ability to work locally, without an internet connection and automatically translate and view selected words from the Lute reading program in the GoldenDict-ng dictionary program.
+
+<img width="960" alt="{B42AB080-9EC6-4A3F-957C-98BB38748F5F}" src="https://github.com/user-attachments/assets/20c9bdfa-5f25-49b7-9eca-084304e94ba8" />
+<img width="960" alt="{72069897-3D0F-426E-82BC-4FB5A598F76D}" src="https://github.com/user-attachments/assets/8b884fbe-0db1-4e4c-b47d-bec144fcc17a" />
+
 
 ## Who is it for?
 In general:
@@ -20,7 +24,7 @@ A utility for solving the problem of translating individual words in [Lute v3](h
 [Issue #593 — Revision of the logic of copying a word and substring of text from the main panel](https://github.com/LuteOrg/lute-v3/issues/593)
 
 ## How does it work?
-Gif 
+https://github.com/user-attachments/assets/4ae740ae-c729-4405-b80a-7b225c7641b1
 
 ## How to get started?
 - Download. You can perform a clone or visit the Releases page.
@@ -86,7 +90,7 @@ The script uses the Modern Clipboard API.
 Which requires additional browser configuration for operation.
 It is necessary to grant permission for the page to interact with the clipboard.
 
-![Chrome Info.](./assets/{2793AAE1-85B1-4A0C-9D16-D1161511C907}.png)
+<img width="407" alt="{2793AAE1-85B1-4A0C-9D16-D1161511C907}" src="https://github.com/user-attachments/assets/8b0186e3-1476-46c3-afa5-f80ebb59581a" />
 
     Clipboard read access allowed [x]
     This site can see text and images copied to the
