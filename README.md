@@ -6,9 +6,11 @@ This is a small utility that serves as an adapter, allowing to establish communi
 
 In my case, it helps to easily connect local programs Lute (LWT) and GoldenDict for the ability to work locally, without an internet connection and automatically translate and view selected words from the Lute reading program in the GoldenDict-ng dictionary program.
 
+- Selecting several words and automatically translating using the GoldenDict-ng option "Enable Scanning".
 <img width="960" alt="{B42AB080-9EC6-4A3F-957C-98BB38748F5F}" src="https://github.com/user-attachments/assets/20c9bdfa-5f25-49b7-9eca-084304e94ba8" />
-<img width="960" alt="{72069897-3D0F-426E-82BC-4FB5A598F76D}" src="https://github.com/user-attachments/assets/8b884fbe-0db1-4e4c-b47d-bec144fcc17a" />
 
+- Working with words. Copying the selected using Ctrl+C manually. The ability to select a separate morpheme of a word in the interface of the utility window.
+<img width="960" alt="{72069897-3D0F-426E-82BC-4FB5A598F76D}" src="https://github.com/user-attachments/assets/8b884fbe-0db1-4e4c-b47d-bec144fcc17a" />
 
 ## Who is it for?
 In general:
