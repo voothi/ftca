@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Text Input</title>
+    <style>
+body { 
+    margin: 0;
+    padding: 0; /* Removed padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+    overflow: hidden; /* Prevents scrollbars */
+}
+textarea { 
+    width: 80%;
+    max-width: 600px;
+    padding: 15px;
+    font-size: 16px;
+    font-family: Arial, sans-serif; /* Specified font family */
+    border: 2px solid #ddd;
+    border-radius: 4px;
+    outline: none;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 0 auto; /* Ensures input is centered */
+    resize: vertical; /* Allows vertical resizing while keeping the width fixed */
+}
+textarea:focus { 
+    border-color: #0078d4;
+}
+    </style>
+</head>
+<body>
+<textarea 
+    id="text-input"
+    autofocus
+    onfocus="this.select()"
+    rows="4"
+>
+</textarea>
+<script>
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+
+    function focusAndSelectInput() {
+        var input = document.getElementById('text-input');
+        input.focus();
+        input.select();
+    }
+
+    function copyToClipboard() {
+        var input = document.getElementById('text-input');
+        var clipboardParam = getQueryParam('clipboard');
+        if (clipboardParam && clipboardParam.toLowerCase() === 'true') {
+            // Force focus and selection
+            input.focus();
+            input.select();
+            // Delay copy to ensure selection is applied
+            setTimeout(() => {
+                navigator.clipboard.writeText(input.value).then(() => {
+                    console.log('Text copied to clipboard');
+                }).catch(err => {
+                    console.error('Unable to copy text: ', err);
+                });
+            }, 100);
+        }
+    }
+
+    window.onload = function() {
+        var input = document.getElementById('text-input');
+        var text = getQueryParam('s');
+        if (text) {
+            input.value = text;
+        }
+        focusAndSelectInput();
+        copyToClipboard();
+    };
+    window.onfocus = focusAndSelectInput;
+</script>
+</body>
+</html>
