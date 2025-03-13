@@ -53,6 +53,9 @@ See below for a separate item on setting up ("How to configure in the Lute v3 we
 - Cross-platform compatibility. Works wherever a Python interpreter and a browser can run.
 - Easy integration. Can be easily included in an existing set of tools without the need for modifications to third-party software.
 
+## What are the features?
+The use case has not been tested in server mode, outside of the local host, over TCP/IP. For example, in a scenario where a user connects within the same network from a tablet or phone to another PC with a running Lute server. In this case, in its current form, without changing the IP in the code of the FTCA utility and additional testing, it may not work. Before making this change, it is necessary to conduct a security audit of the utility and assess the risks. It is also important to remember that the exchange will take place over an unprotected HTTP channel. This allows you to read all the transmitted information between devices using regular network administrator tools.
+
 ## What inspired it?
 I accidentally discovered that when making such a request `https://m.dict.cc/deutsch-russisch/test.html` to the dict.cc dictionary, after the page loads, the input field remains in focus, and the text string is highlighted as if I had entered the hotkey combination Ctrl + A to select everything in focus.
 
@@ -60,6 +63,13 @@ It turned out that this works with JavaScript.
 Highlighted text in this way, when the focus is on this field, allows me to immediately copy it to the clipboard,
 without unnecessary manipulations, and proceed with further processing. Save it, send it to another translator via
 the system clipboard, etc.
+
+## How to use Dark Mode or Dark Theme?
+If you use the Chrome or Firefox browser, you have the ability to install [Dark Reader](https://github.com/darkreader/darkreader).
+To configure, open a link similar to `http://127.0.0.1:5010/?clipboard=true&s=test` and enable the plugin on this site.
+
+It should look something like this. In the screenshot, Lute and FTCA are in the default light themes, with the Dark Reader plugin enabled on them in Dark mode.
+<img width="960" alt="image" src="https://github.com/user-attachments/assets/c4aabcf3-aead-41b9-bfa4-5582591a4a48" />
 
 ## What are the technical features?
 When the utility is launched, a clean HTTP server is raised and a page of the dictionary adapter is published, written using HTML/JS without extensions or dependencies.
