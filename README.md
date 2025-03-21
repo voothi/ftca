@@ -28,6 +28,26 @@ A utility for solving the problem of translating individual words in [Lute v3](h
 ## How does it work?
 https://github.com/user-attachments/assets/4ae740ae-c729-4405-b80a-7b225c7641b1
 
+## How else can you use in GoldenDict and others?
+Another use case for the utility has opened. The utility can be used not only with Lute, but also in the GoldenDict dictionary program as a dictionary similar to how it is configured in Lute.
+This solution allows you to open a page with text in the dictionary window by clicking on a link in the dictionary window. This can be convenient for editing a query on the fly and for analyzing complex lexical constructions. It can be used as an additional intermediate buffer for working with text, which is not possible with the GoldenDict dictionary itself. It only has single-line input, which is not convenient when using in translation mode or in translation mode under the cursor.
+
+Using the window in the browser and the side window of the GoldenDict dictionary.
+<img width="960" alt="{F8846A14-2782-4FBE-A3EC-040F8E5EEF45}" src="https://github.com/user-attachments/assets/bebdc522-bb85-4cf3-8bf4-1794eb7b64f7" />
+
+Setting up the utility in the GoldenDict dictionary.
+GoldenDict-ng  
+Main Window — Dictionaries — Sources — Programs
+```
+[x]
+FTCA
+Audio
+"C:\Program Files\Google\Chrome\Application\chrome.exe" http://127.0.0.1:5010/?clipboard=true&s="%GDWORD%"
+```
+<img width="960" alt="{56ED9E95-983C-4660-A92A-3EA1E0E91033}" src="https://github.com/user-attachments/assets/25328302-f275-4130-892a-0f8b657489fb" />
+<img width="960" alt="{2A58A109-50DB-47F8-AB31-EC481A71A823}" src="https://github.com/user-attachments/assets/cf4e736a-25b5-4e6a-9805-798a4379cd50" />
+
+
 ## How to get started?
 - Download. You can perform a clone or visit the Releases page.
 
