@@ -25,6 +25,15 @@ class RequestHandler(BaseHTTPRequestHandler):
 
         is_multiline = query_params.get('multiline', ['false'])[0].lower() == 'true'
 
+        default_rows = '4'
+        rows_value = default_rows
+        if 'rows' in query_params:
+            try:
+                int(query_params['rows'][0])
+                rows_value = query_params['rows'][0]
+            except (ValueError, IndexError):
+                print(f"Invalid 'rows' parameter received. Using default value: {default_rows}")
+
         try:
             with open('index.html', 'r', encoding='utf-8') as file:
                 html_content = file.read()
@@ -41,6 +50,7 @@ class RequestHandler(BaseHTTPRequestHandler):
         else:
             html_content = html_content.replace('{TEXT_CONTENT}', '')
 
+        html_content = html_content.replace('{ROWS_VALUE}', rows_value)
 
         self.send_response(200)
         self.send_header('Content-type', 'text/html; charset=utf-8')

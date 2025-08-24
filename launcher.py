@@ -13,7 +13,7 @@ def main():
         base64_bytes = base64.b64encode(text_bytes)
         base64_string = base64_bytes.decode('utf-8')
         
-        url = f'http://127.0.0.1:5010/?clipboard=true&multiline=true&s_b64={base64_string}'
+        url = f'http://127.0.0.1:5010/?clipboard=true&multiline=true&rows=20&s_b64={base64_string}'
         
         if not os.path.exists(CHROME_PATH):
             print(f"Error: Could not find Chrome at path: {CHROME_PATH}")
