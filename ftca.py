@@ -11,18 +11,15 @@ class RequestHandler(BaseHTTPRequestHandler):
         
         text_from_query = ''
         
-        # НОВАЯ ЛОГИКА: Проверяем, есть ли параметр s_b64
         if 's_b64' in query_params:
             try:
                 base64_string = query_params['s_b64'][0]
                 base64_bytes = base64_string.encode('utf-8')
-                # Декодируем из Base64 обратно в байты, а затем в строку UTF-8
                 text_bytes = base64.b64decode(base64_bytes)
                 text_from_query = text_bytes.decode('utf-8')
             except Exception as e:
-                print(f"Ошибка декодирования Base64: {e}")
-                text_from_query = "Ошибка декодирования текста."
-        # Старая логика для обратной совместимости и простых тестов
+                print(f"Base64 decoding error: {e}")
+                text_from_query = "Text decoding error."
         elif 's' in query_params:
             text_from_query = query_params.get('s', [''])[0]
 
@@ -38,12 +35,10 @@ class RequestHandler(BaseHTTPRequestHandler):
             print(f"Error: index.html not found in current directory: {os.getcwd()}")
             return
 
-        # Логика вставки текста остается прежней
         if is_multiline:
             safe_text = html.escape(text_from_query)
             html_content = html_content.replace('{TEXT_CONTENT}', safe_text)
         else:
-            # Если это не multiline-запрос, то JS обработает параметр 's'
             html_content = html_content.replace('{TEXT_CONTENT}', '')
 
 

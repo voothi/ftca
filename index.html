@@ -5,26 +5,26 @@
     <style>
 body { 
     margin: 0;
-    padding: 0; /* Removed padding */
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
     background: #f0f0f0;
-    overflow: hidden; /* Prevents scrollbars */
+    overflow: hidden;
 }
 textarea { 
     width: 80%;
     max-width: 600px;
     padding: 15px;
     font-size: 16px;
-    font-family: Arial, sans-serif; /* Specified font family */
+    font-family: Arial, sans-serif;
     border: 2px solid #ddd;
     border-radius: 4px;
     outline: none;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin: 0 auto; /* Ensures input is centered */
-    resize: vertical; /* Allows vertical resizing while keeping the width fixed */
+    margin: 0 auto;
+    resize: vertical;
 }
 textarea:focus { 
     border-color: #0078d4;
@@ -54,10 +54,8 @@ textarea:focus {
         var input = document.getElementById('text-input');
         var clipboardParam = getQueryParam('clipboard');
         if (clipboardParam && clipboardParam.toLowerCase() === 'true') {
-            // Force focus and selection
             input.focus();
             input.select();
-            // Delay copy to ensure selection is applied
             setTimeout(() => {
                 navigator.clipboard.writeText(input.value).then(() => {
                     console.log('Text copied to clipboard');
@@ -69,16 +67,7 @@ textarea:focus {
     }
 
     window.onload = function() {
-        // --- ЭТА ЧАСТЬ БОЛЬШЕ НЕ НУЖНА, Т.К. СЕРВЕР ВСТАВЛЯЕТ ТЕКСТ ---
-        // var input = document.getElementById('text-input');
-        // var text = getQueryParam('s');
-        // if (text && !input.value) { // Добавим проверку, чтобы не перезаписывать серверное значение
-        //     input.value = text;
-        // }
-        // ---
-
         var isMultiline = getQueryParam('multiline');
-        // Если это не multiline-запрос, то старый JS-метод все еще может быть нужен
         if (!isMultiline || isMultiline.toLowerCase() !== 'true') {
             var input = document.getElementById('text-input');
             var text = getQueryParam('s');
