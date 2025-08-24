@@ -37,8 +37,7 @@ textarea:focus {
     autofocus
     onfocus="this.select()"
     rows="4"
->
-</textarea>
+>{TEXT_CONTENT}</textarea>
 <script>
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
@@ -70,11 +69,24 @@ textarea:focus {
     }
 
     window.onload = function() {
-        var input = document.getElementById('text-input');
-        var text = getQueryParam('s');
-        if (text) {
-            input.value = text;
+        // --- ЭТА ЧАСТЬ БОЛЬШЕ НЕ НУЖНА, Т.К. СЕРВЕР ВСТАВЛЯЕТ ТЕКСТ ---
+        // var input = document.getElementById('text-input');
+        // var text = getQueryParam('s');
+        // if (text && !input.value) { // Добавим проверку, чтобы не перезаписывать серверное значение
+        //     input.value = text;
+        // }
+        // ---
+
+        var isMultiline = getQueryParam('multiline');
+        // Если это не multiline-запрос, то старый JS-метод все еще может быть нужен
+        if (!isMultiline || isMultiline.toLowerCase() !== 'true') {
+            var input = document.getElementById('text-input');
+            var text = getQueryParam('s');
+            if (text) {
+                input.value = text;
+            }
         }
+
         focusAndSelectInput();
         copyToClipboard();
     };
