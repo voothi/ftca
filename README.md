@@ -7,35 +7,46 @@
 <img width="407" alt="{2793AAE1-85B1-4A0C-9D16-D1161511C907}" src="https://github.com/user-attachments/assets/7798a69e-956c-4fdd-9f79-72f56b82332a" />
 
 ## Table of Contents
+
 - [Flexible Text Copy Adapter (FTCA)](#flexible-text-copy-adapter-ftca)
   - [Table of Contents](#table-of-contents)
-  - [What is it?](#what-is-it)
-  - [Who is it for?](#who-is-it-for)
-  - [What problem does this program solve?](#what-problem-does-this-program-solve)
-  - [How does it work?](#how-does-it-work)
-  - [How to get started?](#how-to-get-started)
-  - [URL Parameters](#url-parameters)
-  - [How to use in GoldenDict (Single-line text)?](#how-to-use-in-goldendict-single-line-text)
+  - [Overview](#overview)
+    - [What is it?](#what-is-it)
+    - [Who is it for?](#who-is-it-for)
+    - [What problem does this program solve?](#what-problem-does-this-program-solve)
+    - [How does it work?](#how-does-it-work)
+    - [What are the advantages?](#what-are-the-advantages)
+    - [What inspired it?](#what-inspired-it)
+  - [Getting Started](#getting-started)
+    - [What are the system environment prerequisites?](#what-are-the-system-environment-prerequisites)
+    - [How to get started?](#how-to-get-started)
+    - [How to check functionality?](#how-to-check-functionality)
+  - [Configuration \& Usage](#configuration--usage)
+    - [URL Parameters](#url-parameters)
+    - [How to configure in the Lute v3 web interface?](#how-to-configure-in-the-lute-v3-web-interface)
+    - [How to use in GoldenDict (Single-line text)?](#how-to-use-in-goldendict-single-line-text)
       - [Setup:](#setup)
-  - [How to use with multi-line text in GoldenDict?](#how-to-use-with-multi-line-text-in-goldendict)
+    - [How to use with multi-line text in GoldenDict?](#how-to-use-with-multi-line-text-in-goldendict)
       - [Setup:](#setup-1)
-  - [What are the advantages?](#what-are-the-advantages)
-  - [What inspired it?](#what-inspired-it)
-  - [How to use Dark Mode or Dark Theme?](#how-to-use-dark-mode-or-dark-theme)
-  - [What are the technical features?](#what-are-the-technical-features)
-  - [What are the system environment prerequisites?](#what-are-the-system-environment-prerequisites)
-  - [In what environment was it tested?](#in-what-environment-was-it-tested)
-  - [How to configure in the Lute v3 web interface?](#how-to-configure-in-the-lute-v3-web-interface)
-  - [How to allow Clipboard Read Access (Chrome)?](#how-to-allow-clipboard-read-access-chrome)
-  - [How to check functionality?](#how-to-check-functionality)
-  - [What about the security of my buffer data?](#what-about-the-security-of-my-buffer-data)
-  - [Why doesn't it work?](#why-doesnt-it-work)
-  - [Kardenwort Ecosystem](#kardenwort-ecosystem)
-  - [License](#license)
-  - [Author's Disclaimer](#authors-disclaimer)
-  - [Stars](#stars)
+    - [How to allow Clipboard Read Access (Chrome)?](#how-to-allow-clipboard-read-access-chrome)
+    - [How to use Dark Mode or Dark Theme?](#how-to-use-dark-mode-or-dark-theme)
+  - [Technical Details](#technical-details)
+    - [What are the technical features?](#what-are-the-technical-features)
+    - [In what environment was it tested?](#in-what-environment-was-it-tested)
+    - [What about the security of my buffer data?](#what-about-the-security-of-my-buffer-data)
+  - [Troubleshooting](#troubleshooting)
+    - [Why doesn't it work?](#why-doesnt-it-work)
+  - [Legal \& Misc](#legal--misc)
+    - [Kardenwort Ecosystem](#kardenwort-ecosystem)
+    - [License](#license)
+    - [Author's Disclaimer](#authors-disclaimer)
+    - [Stars](#stars)
 
-## What is it?
+---
+
+## Overview
+
+### What is it?
 This is a small utility that serves as an adapter, allowing to establish communication between a class of programs for assistance in reading in a foreign language and a local dictionary or translator, through the system clipboard.
 
 In my case, it helps to easily connect local programs Lute (LWT) and GoldenDict for the ability to work locally, without an internet connection and automatically translate and view selected words from the Lute reading program in the GoldenDict-ng dictionary program.
@@ -48,7 +59,7 @@ In my case, it helps to easily connect local programs Lute (LWT) and GoldenDict 
 
 [Back to Top](#table-of-contents)
 
-## Who is it for?
+### Who is it for?
 In general:
 - Studying languages and mastering convenient tools for working with large texts.
 
@@ -58,19 +69,42 @@ In technical terms:
 
 [Back to Top](#table-of-contents)
 
-## What problem does this program solve?
+### What problem does this program solve?
 A utility for solving the problem of translating individual words in [Lute v3](https://github.com/LuteOrg/lute-v3).
 
 [Issue #593 — Revision of the logic of copying a word and substring of text from the main panel](https://github.com/LuteOrg/lute-v3/issues/593)
 
 [Back to Top](#table-of-contents)
 
-## How does it work?
+### How does it work?
 https://github.com/user-attachments/assets/4ae740ae-c729-4405-b80a-7b225c7641b1
 
 [Back to Top](#table-of-contents)
 
-## How to get started?
+### What are the advantages?
+- **Versatility**. Can be integrated into [Lute](https://github.com/LuteOrg/lute-v3) and similar programs where interaction with dictionaries is done through HTTP requests.
+- **Offline operation**. Allows for an offline workflow between reading software and a local dictionary like GoldenDict-ng.
+- **Multi-line text preservation**. Reliably handles text with line breaks from applications like GoldenDict, which is not possible with direct command-line calls.
+- **Minimalism**. Minimal software dependencies.
+- **Cross-platform compatibility**. Works wherever a Python interpreter and a browser can run.
+- **Easy integration**. Can be easily included in an existing set of tools.
+
+[Back to Top](#table-of-contents)
+
+### What inspired it?
+I accidentally discovered that when making a request like `https://m.dict.cc/deutsch-russisch/test.html`, the input field on the page loads with the search term already selected (as if by Ctrl+A). This JavaScript-powered feature allows for immediate copying to the clipboard, which inspired the core functionality of FTCA.
+
+[Back to Top](#table-of-contents)
+
+## Getting Started
+
+### What are the system environment prerequisites?
+- Python 3.x.
+- Chrome or a browser that supports the Modern Clipboard API.
+
+[Back to Top](#table-of-contents)
+
+### How to get started?
 - Download. You can perform a clone or visit the Releases page. The project consists of three main files: `ftca.py` (the server), `index.html` (the web page), and `launcher.py` (a helper script for multi-line support in GoldenDict).
 
 - Check that the Python interpreter is installed on your system.
@@ -88,7 +122,27 @@ See the "URL Parameters" and "How to check functionality?" sections below for ex
 
 [Back to Top](#table-of-contents)
 
-## URL Parameters
+### How to check functionality?
+Run the `ftca.py` server.
+
+Open one of the links below in your browser.  
+
+- **Option 1 (Simple text, default size)**
+http://127.0.0.1:5010/?s=test%20test
+
+- **Option 2 (With clipboard copy)**
+http://127.0.0.1:5010/?clipboard=true&s=test
+
+- **Option 3 (With custom height)**
+http://127.0.0.1:5010/?s=This%20is%20a%20test%20in%20a%20taller%20box&rows=10
+
+The page should load with your text in the input field, fully selected. If `clipboard=true` is used and permission is granted, the text will also be automatically copied to your clipboard. For multi-line tests, use the GoldenDict setup described above.
+
+[Back to Top](#table-of-contents)
+
+## Configuration & Usage
+
+### URL Parameters
 The utility's behavior is controlled by parameters in the URL:
 
 - **`s`**: The text content to display in the text area. The text should be standard URL-encoded.
@@ -107,7 +161,19 @@ The utility's behavior is controlled by parameters in the URL:
 
 [Back to Top](#table-of-contents)
 
-## How to use in GoldenDict (Single-line text)?
+### How to configure in the Lute v3 web interface?
+Settings — Languages — [Your Language] — Edit  
+Dictionaries — Add dictionary  
+- **Type**: Terms
+- **Open in**: Pop-up window
+- **URI**: `http://127.0.0.1:5010/?clipboard=true&rows=8&s=[LUTE]`
+- **Is active?**: `true`
+
+*(Note: You can adjust the `rows=8` value to your preferred initial height.)*
+
+[Back to Top](#table-of-contents)
+
+### How to use in GoldenDict (Single-line text)?
 This utility can be used not only with Lute but also within GoldenDict as a "Program" dictionary. This allows you to send the current search term to a new browser tab for easier editing or further processing.
 
 This is ideal for single words or short phrases without line breaks.
@@ -127,7 +193,7 @@ Command Line: "C:\Program Files\Google\Chrome\Application\chrome.exe" http://127
 
 [Back to Top](#table-of-contents)
 
-## How to use with multi-line text in GoldenDict?
+### How to use with multi-line text in GoldenDict?
 When passing long text with line breaks from GoldenDict, the standard command-line method will fail and merge everything into a single line.
 
 To preserve line breaks, we must use the included `launcher.py` helper script. It safely encodes the text using Base64 before launching the browser. Additionally, it automatically sets the text area height to **20 rows** (`rows=20`) for better viewing of multi-line content.
@@ -154,40 +220,28 @@ cmd /c "C:\Users\User\AppData\Local\Programs\Python\Python312\python.exe" "D:\My
 
 [Back to Top](#table-of-contents)
 
-## What are the advantages?
-- **Versatility**. Can be integrated into [Lute](https://github.com/LuteOrg/lute-v3) and similar programs where interaction with dictionaries is done through HTTP requests.
-- **Offline operation**. Allows for an offline workflow between reading software and a local dictionary like GoldenDict-ng.
-- **Multi-line text preservation**. Reliably handles text with line breaks from applications like GoldenDict, which is not possible with direct command-line calls.
-- **Minimalism**. Minimal software dependencies.
-- **Cross-platform compatibility**. Works wherever a Python interpreter and a browser can run.
-- **Easy integration**. Can be easily included in an existing set of tools.
+### How to allow Clipboard Read Access (Chrome)?
+The script uses the Modern Clipboard API, which requires you to grant the page permission to interact with the clipboard.
+
+<img width="407" alt="{2793AAE1-85B1-4A0C-9D16-D1161511C907}" src="https://github.com/user-attachments/assets/8b0186e3-1476-46c3-afa5-f80ebb59581a" />
 
 [Back to Top](#table-of-contents)
 
-## What inspired it?
-I accidentally discovered that when making a request like `https://m.dict.cc/deutsch-russisch/test.html`, the input field on the page loads with the search term already selected (as if by Ctrl+A). This JavaScript-powered feature allows for immediate copying to the clipboard, which inspired the core functionality of FTCA.
-
-[Back to Top](#table-of-contents)
-
-## How to use Dark Mode or Dark Theme?
+### How to use Dark Mode or Dark Theme?
 If you use a browser extension like [Dark Reader](https://github.com/darkreader/darkreader), you can enable it for the FTCA page. Simply open a link like `http://127.0.0.1:5010/?s=test` and activate the plugin for this site.
 
 <img width="960" alt="image" src="https://github.com/user-attachments/assets/c4aabcf3-aead-41b9-bfa4-5582591a4a48" />
 
 [Back to Top](#table-of-contents)
 
-## What are the technical features?
+## Technical Details
+
+### What are the technical features?
 The utility runs a lightweight, dependency-free HTTP server using Python's standard library. It serves a single HTML/JS page that acts as the adapter. For multi-line text, a helper script uses Base64 encoding to ensure data integrity during transmission via the command line.
 
 [Back to Top](#table-of-contents)
 
-## What are the system environment prerequisites?
-- Python 3.x.
-- Chrome or a browser that supports the Modern Clipboard API.
-
-[Back to Top](#table-of-contents)
-
-## In what environment was it tested?
+### In what environment was it tested?
 - Windows 11.
 - Python 3.12.7.
 - Chrome Version 122.0.6261.95 (Official Build) (64-bit).
@@ -196,70 +250,37 @@ The utility runs a lightweight, dependency-free HTTP server using Python's stand
 
 [Back to Top](#table-of-contents)
 
-## How to configure in the Lute v3 web interface?
-Settings — Languages — [Your Language] — Edit  
-Dictionaries — Add dictionary  
-- **Type**: Terms
-- **Open in**: Pop-up window
-- **URI**: `http://127.0.0.1:5010/?clipboard=true&rows=8&s=[LUTE]`
-- **Is active?**: `true`
-
-*(Note: You can adjust the `rows=8` value to your preferred initial height.)*
-
-[Back to Top](#table-of-contents)
-
-## How to allow Clipboard Read Access (Chrome)?
-The script uses the Modern Clipboard API, which requires you to grant the page permission to interact with the clipboard.
-
-<img width="407" alt="{2793AAE1-85B1-4A0C-9D16-D1161511C907}" src="https://github.com/user-attachments/assets/8b0186e3-1476-46c3-afa5-f80ebb59581a" />
-
-[Back to Top](#table-of-contents)
-
-## How to check functionality?
-Run the `ftca.py` server.
-
-Open one of the links below in your browser.  
-
-- **Option 1 (Simple text, default size)**
-http://127.0.0.1:5010/?s=test%20test
-
-- **Option 2 (With clipboard copy)**
-http://127.0.0.1:5010/?clipboard=true&s=test
-
-- **Option 3 (With custom height)**
-http://127.0.0.1:5010/?s=This%20is%20a%20test%20in%20a%20taller%20box&rows=10
-
-The page should load with your text in the input field, fully selected. If `clipboard=true` is used and permission is granted, the text will also be automatically copied to your clipboard. For multi-line tests, use the GoldenDict setup described above.
-
-[Back to Top](#table-of-contents)
-
-## What about the security of my buffer data?
+### What about the security of my buffer data?
 This utility does not transmit your data to the internet. It operates locally on your PC, transmitting data between applications via the loopback network interface (`127.0.0.1`). While it doesn't store data on disk, it is processed in RAM. Assess your own risks when working with sensitive information. It is strongly recommended not to expose this server to any address other than the loopback address.
 
 [Back to Top](#table-of-contents)
 
-## Why doesn't it work?
+## Troubleshooting
+
+### Why doesn't it work?
 - Ensure no other application is using port `5010`.
 - Make sure you have only one instance of the `ftca.py` script running. Check your system's process manager for `python` processes related to `ftca`.
 - If using the multi-line method, double-check that the paths to `python.exe` and `launcher.py` in your GoldenDict command are correct and enclosed in double quotes.
 
 [Back to Top](#table-of-contents)
 
-## Kardenwort Ecosystem
+## Legal & Misc
+
+### Kardenwort Ecosystem
 
 This project is part of the **[Kardenwort](https://github.com/kardenwort)** environment, designed to create a focused and efficient learning ecosystem.
 
 [Back to Top](#table-of-contents)
 
-## License
+### License
 MIT License.
 
 [Back to Top](#table-of-contents)
 
-## Author's Disclaimer
+### Author's Disclaimer
 The software is provided "as is" without any warranties. The author is not responsible for any damages or issues arising from the use of this software. Users are advised to use it at their own risk.
 
 [Back to Top](#table-of-contents)
 
-## Stars
+### Stars
 If you find this utility helpful, please consider starring the repository to support the developer's efforts.
